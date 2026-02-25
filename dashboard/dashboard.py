@@ -1,4 +1,4 @@
-import streamlit as st
+cimport streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -33,7 +33,7 @@ end_date = st.sidebar.date_input(
     max_value=max_date
 )
 season_options = list(df_day["season"].unique())+ ["All season"]
-selected_seasons = st.sidebar.multiselect(
+selected_seasons = st.sidebar.selectbox(
     "Pilih Musim:",
     options= season_options,
     default=["All season"]
@@ -89,6 +89,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
