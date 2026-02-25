@@ -13,28 +13,28 @@ df_day["dteday"] = pd.to_datetime(df_day["dteday"])
 st.subheader("Bike Sharing Data by UC Irvine Machine Learning Repository")
 st.dataframe(df_day.head())
 
-st.sidebar.header("Filters")
+st.sidebar.header("Filter")
 
 
 min_date = df_day["dteday"].min()
 max_date = df_day["dteday"].max()
 
 start_date = st.sidebar.date_input(
-    "Start Date",
+    "Tanggal Mulai",
     value=min_date,
     min_value=min_date,
     max_value=max_date
 )
 
 end_date = st.sidebar.date_input(
-    "End Date",
+    "Tanggal Akhir",
     value=max_date,
     min_value=min_date,
     max_value=max_date
 )
 
 selected_seasons = st.sidebar.multiselect(
-    "Select Season:",
+    "Pilih Musim:",
     options=df_day["season"].unique(),
     default=[]
 )
@@ -52,27 +52,27 @@ total_rentals = filtered_df["cnt"].sum()
 avg_rentals = filtered_df["cnt"].mean()
 
 col1, col2 = st.columns(2)
-col1.metric("Total Rentals", f"{total_rentals:,.0f}")
-col2.metric("Average Daily Rentals", f"{avg_rentals:,.0f}")
+col1.metric("Total Peminjaman", f"{total_rentals:,.0f}")
+col2.metric("Rata-Rata Peminjaman Harian", f"{avg_rentals:,.0f}")
 
 
-st.subheader("Trend of Bike Rentals Over Time")
+st.subheader("Tren Peminjaman Sepeda 2011-2012")
 fig, ax = plt.subplots()
 ax.plot(filtered_df["dteday"], filtered_df ["cnt"], linewidth=1, marker="o", markersize=2)
-ax.set_xlabel("Date")
-ax.set_ylabel("Total Rentals")
+ax.set_xlabel("Tanggal")
+ax.set_ylabel("Total Peminjaman")
 plt.xticks(rotation=45)
 st.pyplot(fig)
 
-st.subheader("Average Rentals by Season")
+st.subheader("Rata-Rata Peminjaman Berdasarkan Musim")
 season_avg = df_day.groupby("season")["cnt"].mean()
 fig2, ax2 = plt.subplots()
 season_avg.plot(kind="bar", ax=ax2)
-ax2.set_ylabel("Average Rentals")
+ax2.set_ylabel("Rata-Rata Peminjaman")
 plt.xticks(rotation=45)
 st.pyplot(fig2)
 
-st.subheader("Correlation Heatmap")
+st.subheader("Heatmap Korelasi Peminjaman vs Iklim")
 
 corr_matrix = filtered_df.corr(numeric_only=True)
 plt.figure(figsize=(10, 8))
@@ -86,3 +86,4 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
