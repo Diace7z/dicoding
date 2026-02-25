@@ -36,12 +36,12 @@ season_options = list(df_day["season"].unique())+ ["All season"]
 selected_seasons = st.sidebar.multiselect(
     "Pilih Musim:",
     options= season_options,
-    default=[]
+    default=["All season"]
 )
 
 if selected_seasons:
     if selected_seasons == "All season":
-      None
+      df_day = df_day[df_day["season"].isin([df_day["season"].unique()])]
     else:
       df_day = df_day[df_day["season"].isin(selected_seasons)]
 
@@ -89,6 +89,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
