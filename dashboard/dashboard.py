@@ -1,4 +1,4 @@
-cimport streamlit as st
+import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -89,6 +89,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
