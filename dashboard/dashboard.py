@@ -41,7 +41,6 @@ selected_seasons = st.sidebar.multiselect(
 
 if selected_seasons:
     if selected_seasons == "All season":
-      df_day = df_day.copy()
     else:
       df_day = df_day[df_day["season"].isin(selected_seasons)]
 
@@ -89,6 +88,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
