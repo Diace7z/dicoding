@@ -32,7 +32,7 @@ end_date = st.sidebar.date_input(
     min_value=min_date,
     max_value=max_date
 )
-
+season_options = df_day["season"].unique() + ["All season"]
 selected_seasons = st.sidebar.multiselect(
     "Pilih Musim:",
     options=df_day["season"].unique(),
@@ -40,7 +40,10 @@ selected_seasons = st.sidebar.multiselect(
 )
 
 if selected_seasons:
-    df_day = df_day[df_day["season"].isin(selected_seasons)]
+    if selected_seasons == "All season":
+      df_day = df_day
+    else:
+      df_day = df_day[df_day["season"].isin(selected_seasons)]
 
 time_range = ((df_day["dteday"] >= pd.to_datetime(start_date)) &
         (df_day["dteday"] <= pd.to_datetime(end_date))
@@ -86,4 +89,5 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
