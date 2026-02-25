@@ -32,10 +32,10 @@ end_date = st.sidebar.date_input(
     min_value=min_date,
     max_value=max_date
 )
-season_options = df_day["season"].unique() + ["All season"]
+season_options = list(df_day["season"].unique())+ ["All season"]
 selected_seasons = st.sidebar.multiselect(
     "Pilih Musim:",
-    options=df_day["season"].unique(),
+    options= season_options,
     default=[]
 )
 
@@ -89,5 +89,6 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
