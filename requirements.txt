@@ -1,4 +1,4 @@
-`absl-py==1.4.0
+absl-py==1.4.0
 accelerate==1.12.0
 access==1.1.10.post3
 affine==2.4.0
