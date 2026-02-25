@@ -10,7 +10,7 @@ df_day= pd.read_csv("https://drive.usercontent.google.com/download?id=1LIJpFWNiO
                     index_col=0)
 df_day["dteday"] = pd.to_datetime(df_day["dteday"])
 
-st.subheader("Cleaned Data")
+st.subheader("Bike Sharing Data by UC Irvine Machine Learning Repository")
 st.dataframe(df_day.head())
 
 st.sidebar.header("Filters")
@@ -84,4 +84,5 @@ sns.heatmap(
     fmt=".2f",
 )
 plt.xticks(rotation=45)
+
 st.pyplot(fig3)
