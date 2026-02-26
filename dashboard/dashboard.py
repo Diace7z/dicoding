@@ -42,7 +42,7 @@ selected_seasons = st.sidebar.selectbox(
 if selected_seasons == "All season":
   df_day = df_day.copy()
 else:
-  df_day = df_day[df_day["season"] == selected_season]
+  df_day = df_day[df_day["season"] == selected_seasons]
 
 time_range = ((df_day["dteday"] >= pd.to_datetime(start_date)) &
         (df_day["dteday"] <= pd.to_datetime(end_date))
@@ -88,6 +88,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
