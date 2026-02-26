@@ -32,7 +32,7 @@ end_date = st.sidebar.date_input(
     min_value=min_date,
     max_value=max_date
 )
-season_options = df_day["season"].unique().tolist+ ["All season"]
+season_options =  ["All season"] + df_day["season"].unique().tolist
 selected_seasons = st.sidebar.selectbox(
     "Pilih Musim:",
     season_options
@@ -40,7 +40,7 @@ selected_seasons = st.sidebar.selectbox(
 
 
 if selected_seasons == ["All season"]:
-  df_day = df_day[df_day["season"].isin(df_day["season"].unique().tolist)
+  df_day = df_day[df_day["season"].isin(df_day["season"].unique().tolist)]
 else:
   df_day = df_day[df_day["season"].isin(selected_seasons)]
 
@@ -88,6 +88,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
