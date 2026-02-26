@@ -91,10 +91,11 @@ if len(filtered_df):
   
   st.pyplot(fig3)
 else:
+  st.header("Data yang kamu cari tidak tersedia.")
   st.markdown("""
-  Data yang kamu cari tidak tersedia.
   Silahkan pilih filter yang sesuai."""
              )
+
 
 
 
