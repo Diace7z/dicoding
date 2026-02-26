@@ -73,7 +73,7 @@ if len(filtered_df):
   fig2, ax2 = plt.subplots()
   season_avg.plot(kind="bar", ax=ax2)
   ax2.set_ylabel("Rata-Rata Peminjaman")
-  plt.xticks(rotation=90)
+  plt.xticks(rotation=0)
   st.pyplot(fig2)
   
 else:
@@ -81,6 +81,7 @@ else:
   st.markdown("""
   Silahkan pilih filter yang sesuai."""
              )
+
 
 
 
