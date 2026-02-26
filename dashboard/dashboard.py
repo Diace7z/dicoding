@@ -75,7 +75,7 @@ try:
   plt.xticks(rotation=45)
   st.pyplot(fig2)
 except:
-  print("Data tidak tersedia, silahkan ubah filter yang sesuai")
+  st.markdown("""Data dicari tidak tersedia. Silahkan pilih filter yang sesuai.""")
 
 st.subheader("Heatmap Korelasi Peminjaman vs Iklim")
 
@@ -91,6 +91,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
