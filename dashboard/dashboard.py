@@ -67,12 +67,15 @@ plt.xticks(rotation=45)
 st.pyplot(fig)
 
 st.subheader("Rata-Rata Peminjaman Berdasarkan Musim")
-season_avg = filtered_df.groupby("season")["cnt"].median()
-fig2, ax2 = plt.subplots()
-season_avg.plot(kind="bar", ax=ax2)
-ax2.set_ylabel("Rata-Rata Peminjaman")
-plt.xticks(rotation=45)
-st.pyplot(fig2)
+try:
+  season_avg = filtered_df.groupby("season")["cnt"].median()
+  fig2, ax2 = plt.subplots()
+  season_avg.plot(kind="bar", ax=ax2)
+  ax2.set_ylabel("Rata-Rata Peminjaman")
+  plt.xticks(rotation=45)
+  st.pyplot(fig2)
+except:
+  print("Data tidak tersedia, silahkan ubah filter yang sesuai")
 
 st.subheader("Heatmap Korelasi Peminjaman vs Iklim")
 
@@ -88,6 +91,7 @@ sns.heatmap(
 plt.xticks(rotation=45)
 
 st.pyplot(fig3)
+
 
 
 
