@@ -50,47 +50,51 @@ time_range = ((df_day["dteday"] >= pd.to_datetime(start_date)) &
 
 filtered_df = df_day.loc[time_range]
 
-total_rentals = filtered_df["cnt"].sum()
-avg_rentals = filtered_df["cnt"].mean()
-
-col1, col2 = st.columns(2)
-col1.metric("Total Peminjaman", f"{total_rentals:,.0f}")
-col2.metric("Rata-Rata Peminjaman Harian", f"{avg_rentals:,.0f}")
-
-
-st.subheader("Tren Peminjaman Sepeda 2011-2012")
-fig, ax = plt.subplots()
-ax.plot(filtered_df["dteday"], filtered_df ["cnt"], linewidth=1, marker="o", markersize=2)
-ax.set_xlabel("Tanggal")
-ax.set_ylabel("Total Peminjaman")
-plt.xticks(rotation=45)
-st.pyplot(fig)
-
-st.subheader("Rata-Rata Peminjaman Berdasarkan Musim")
-try:
+if len(filtered_df):
+  total_rentals = filtered_df["cnt"].sum()
+  avg_rentals = filtered_df["cnt"].mean()
+  
+  col1, col2 = st.columns(2)
+  col1.metric("Total Peminjaman", f"{total_rentals:,.0f}")
+  col2.metric("Rata-Rata Peminjaman Harian", f"{avg_rentals:,.0f}")
+  
+  
+  st.subheader("Tren Peminjaman Sepeda 2011-2012")
+  fig, ax = plt.subplots()
+  ax.plot(filtered_df["dteday"], filtered_df ["cnt"], linewidth=1, marker="o", markersize=2)
+  ax.set_xlabel("Tanggal")
+  ax.set_ylabel("Total Peminjaman")
+  plt.xticks(rotation=45)
+  st.pyplot(fig)
+  
+  st.subheader("Rata-Rata Peminjaman Berdasarkan Musim")
+  
   season_avg = filtered_df.groupby("season")["cnt"].median()
   fig2, ax2 = plt.subplots()
   season_avg.plot(kind="bar", ax=ax2)
   ax2.set_ylabel("Rata-Rata Peminjaman")
   plt.xticks(rotation=45)
   st.pyplot(fig2)
-except:
-  st.markdown("""Data dicari tidak tersedia. Silahkan pilih filter yang sesuai.""")
-
-st.subheader("Heatmap Korelasi Peminjaman vs Iklim")
-
-corr_matrix = filtered_df.corr(numeric_only=True)
-plt.figure(figsize=(10, 8))
-fig3, ax3 = plt.subplots()
-sns.heatmap(
-    corr_matrix,
-    annot=True,
-    cmap="coolwarm",
-    fmt=".2f",
-)
-plt.xticks(rotation=45)
-
-st.pyplot(fig3)
+  
+  st.subheader("Heatmap Korelasi Peminjaman vs Iklim")
+  
+  corr_matrix = filtered_df.corr(numeric_only=True)
+  plt.figure(figsize=(10, 8))
+  fig3, ax3 = plt.subplots()
+  sns.heatmap(
+      corr_matrix,
+      annot=True,
+      cmap="coolwarm",
+      fmt=".2f",
+  )
+  plt.xticks(rotation=45)
+  
+  st.pyplot(fig3)
+else:
+  st.markdown("""
+  Data yang kamu cari tidak tersedia.
+  Silahkan pilih filter yang sesuai."""
+             )
 
 
 
