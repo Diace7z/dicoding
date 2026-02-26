@@ -76,25 +76,12 @@ if len(filtered_df):
   plt.xticks(rotation=45)
   st.pyplot(fig2)
   
-  st.subheader("Heatmap Korelasi Peminjaman vs Iklim")
-  
-  corr_matrix = filtered_df.corr(numeric_only=True)
-  plt.figure(figsize=(10, 8))
-  fig3, ax3 = plt.subplots()
-  sns.heatmap(
-      corr_matrix,
-      annot=True,
-      cmap="coolwarm",
-      fmt=".2f",
-  )
-  plt.xticks(rotation=45)
-  
-  st.pyplot(fig3)
 else:
   st.header("Data yang kamu cari tidak tersedia.")
   st.markdown("""
   Silahkan pilih filter yang sesuai."""
              )
+
 
 
 
