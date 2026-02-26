@@ -6,7 +6,7 @@ import seaborn as sns
 st.set_page_config(layout="wide")
 st.title("Bike Sharing Dashboard")
 
-df_day= pd.read_csv(""https://drive.usercontent.google.com/download?id=1LIJpFWNiOE9SmS3i-om7DsGhcCCfLGuL&export=download&authuser=0&confirm=t&uuid=f485c1b3-a2f8-401b-8af7-e41f6da3595c&at=APcXIO2jRizjjEvUp8Xtz96IyHlT:1772003092241"",
+df_day= pd.read_csv("https://drive.usercontent.google.com/download?id=1LIJpFWNiOE9SmS3i-om7DsGhcCCfLGuL&export=download&authuser=0&confirm=t&uuid=f485c1b3-a2f8-401b-8af7-e41f6da3595c&at=APcXIO2jRizjjEvUp8Xtz96IyHlT:1772003092241",
                     index_col=0)
 df_day["dteday"] = pd.to_datetime(df_day["dteday"])
 
@@ -82,6 +82,7 @@ else:
   st.markdown("""
   Silahkan pilih filter yang sesuai."""
              )
+
 
 
 
